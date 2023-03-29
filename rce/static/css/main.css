@@ -1,0 +1,36 @@
+*{
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+/* 两列右侧自适应布局 */
+.left-fixed_right-auto{
+    width: 100%;
+    /* height: 200px; */
+    clear: both;
+    display: inline-block;
+    margin-top: 20px;
+    /* border: 1px solid rgba(255, 255, 255, .5); */
+}
+.left{
+    position:relative;
+    float:left;
+    width:200px;/* 数值核心1 */
+    height: 100%;
+    margin-right:-200px;/* 数值核心2 */
+    background: rgb(47, 45, 45);
+}
+.right{
+    float:right;
+    width:100%;
+    height: 100%;
+    padding-left: 20px;
+    /* background: pink; */
+}
+.right-content{
+    margin-left:200px;/* 数值核心3 */
+    height: 100%;
+    /* background: rgb(155, 155, 225); */
+}
