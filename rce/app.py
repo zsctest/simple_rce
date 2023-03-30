@@ -15,10 +15,9 @@ def first():
 @app.route('/first',methods=['POST'])
 def ping():
     ip_address = request.form['inputip']
-    command = f'ping {ip_address}'
-    process = subprocess.Popen(command.split(), stdout=subprocess.PIPE)
-    output, error = process.communicate()
-    return render_template('first.html', output=output.decode('gbk'))
+    command = 'ping -c 3 %s'%ip_address
+    status,output = subprocess.getstatusoutput(command)
+    return render_template('first.html', output=output)
 
 @app.route("/second")
 def second():
