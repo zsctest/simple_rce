@@ -1,0 +1,13 @@
+{% macro curlForm(action,output) %}
+<form class="form-inline" action="{{form_action}}" method="POST">
+    <div class="form-group mx-sm-3 mb-2">
+        <label for="inputip" class="sr-only">ip</label>
+        <input type="ip" class="form-control" name="inputip" id="inputip" placeholder="ip">
+    </div>
+    <button type="submit" class="btn btn-primary mb-2">curl</button>
+</form>
+<h3>Result</h3>
+<div>
+    <pre>{{output}}</pre>
+</div>
+{% endmacro %}

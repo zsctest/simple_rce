@@ -2,12 +2,12 @@
 
 {% block body %}
     <div>
-        <h1>第1关</h1>
-        <p>ping,ping看</p>
-        <form class="form-inline" action="/first" method="POST">
+        <h1>第2关</h1>
+        <p>{{detail}}</p>
+        <form class="form-inline" action="/second" method="POST">
             <div class="form-group mx-sm-3 mb-2">
                 <label for="inputip" class="sr-only">ip</label>
-                <input type="text" class="form-control" name="inputip" id="inputip" placeholder="ip">
+                <input type="ip" class="form-control" name="inputip" id="inputip" placeholder="ip">
             </div>
             <button type="submit" class="btn btn-primary mb-2">ping</button>
         </form>
