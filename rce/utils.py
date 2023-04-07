@@ -1,5 +1,6 @@
 import re
 import subprocess
+import os
 
 class StringFilter:
     def __init__(self, filter_func):
@@ -23,7 +24,7 @@ def single_quotation(string):
     return "\'%s\'"%string
 
 def filter_quotation(string):
-    #过滤双引号和单引号
+    #过滤双引号和单引号，同时用双引号包裹输入
     string = string.replace("\"","").replace("\'","")
     return "\"%s\""%string
 
@@ -32,12 +33,21 @@ def ping2(request,rule):
     ip_address = request.form['inputip']
     new_address = StringFilter(rule).filter(ip_address)
     command = 'ping -c 3 %s'%new_address
+    print("输入：",command)
+    return subprocess.getstatusoutput(command)
+
+def ping3(request,rule):
+    ip_address = request.form['inputip']
+    new_address = StringFilter(rule).filter(ip_address)
+    command = 'ping -c 3 %s'%new_address
+    print("输入：",command)
     return subprocess.getstatusoutput(command)
 
 def curl(request,rule):
     target = request.form['inputip']
     filtered_target = StringFilter(rule).filter(target)
     command = 'curl %s'%filtered_target
+    print("输入：",command)
     return subprocess.getstatusoutput(command)
 
 def is_valid_hostname(hostname):

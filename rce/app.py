@@ -15,7 +15,7 @@ def first():
     return render_template("/views/first.html")
 
 @app.route('/first',methods=['POST'])
-def ping():
+def first2():
     ip_address = request.form['inputip']
     command = 'ping -c 3 %s'%ip_address
     status,output = subprocess.getstatusoutput(command)
