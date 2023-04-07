@@ -19,7 +19,7 @@ def first2():
     ip_address = request.form['inputip']
     command = 'ping -c 3 %s'%ip_address
     status,output = subprocess.getstatusoutput(command)
-    return render_template('/views/first.html', output=output)
+    return render_template('/views/first.html', output=output,detail="pingpingping")
 
 @app.route("/second",methods=['GET'])
 def second():

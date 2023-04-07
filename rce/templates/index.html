@@ -1,7 +1,110 @@
 {% extends '_layout.html' %}
 
 {% block body %}
+<div class="index">
     <div>
-        <h1>简介</h1>
+        <h1>什么是RCE</h1>
+        <p>远程命令/代码执行漏洞,简称RCE漏洞,可以让攻击者直接向后台服务器远程注入操作系统命令或者代码,从而控制后台系统。RCE分为远程命令执行ping和远程代码执行evel。</p>
     </div>
+    <div>
+        <h2>可能导致命令注入的函数</h2>
+            <h3>PHP</h3>
+            <pre>
+            <li class="indexli">system($cmd)</li>
+            <li class="indexli">exec($cmd, array $output)</li>
+            <li class="indexli">passthru($cmd)</li>
+            <li class="indexli">shell_exec($cmd)</li>
+            <li class="indexli">popen($cmd, $mode)</li>
+            <li class="indexli">proc_open($cmd, array $descriptorspec, array $pipes)</li>
+            </pre>
+            <h3>Python</h3>
+            <pre>
+            <li class="indexli">os.system()</li>
+            <li class="indexli">os.popen()</li>
+            <li class="indexli">subprocess.call()</li>
+            <li class="indexli">subprocess.run()</li>
+            <li class="indexli">subprocess.check_call()</li>
+            <li class="indexli">subprocess.check_output()</li>
+            <li class="indexli">pty.spawn</li>
+            <li class="indexli">commands.getstatusoutput(cmd)</li>
+            <li class="indexli">commands.getoutput(cmd)</li>
+            <li class="indexli">sh库,如sh.whoami(),sh.pwd()</li>
+        </pre>
+
+            <h3>Java</h3>
+        <pre>
+            <li class="indexli">java.lang.Runtime.getRuntime().exec(cmd)</li>
+        </pre>
+
+        </ol>
+    </div>
+    <div>
+        <h2>Linux命令的语法</h2>
+        <pre>
+            <li class="indexli">|(管道符)</li>
+            <li class="indexli">&amp;(and符)</li>
+            <li class="indexli">&amp;&amp;与||</li>
+            <li class="indexli">;(分号)</li>
+            <li class="indexli">`(反引号)</li>
+            <li class="indexli">单引号和双引号</li>
+            <li class="indexli">输入输出重定向</li>
+            <li class="indexli">通配符</li>
+            <li class="indexli">shell变量</li>
+            <li class="indexli">$符</li>
+        </pre>
+    </div>
+    <div>
+        <h2>命令注入常见的绕过姿势</h2>
+        <pre>
+            <li class="indexli">空格绕过</li>
+            <li class="indexli">命令分隔符</li>
+            <li class="indexli">内联执行</li>
+            <li class="indexli">变量拼接执行</li>
+            <li class="indexli">花括号</li>
+            <li class="indexli">黑名单绕过</li>
+        </pre>
+    </div>
+    <div>
+        <h2>无回显的命令注入</h2>
+        <pre>
+            <li class="indexli">服务器和DNS日志</li>
+            <li class="indexli">sleep</li>
+            <li class="indexli">利用暴露的服务</li>
+            <li class="indexli">反弹shell</li>
+            <li class="indexli">限制长度的利用</li>
+            <li class="indexli">*的另一种用法</li>
+            <li class="indexli">四字绕过</li>
+        </pre>
+    </div>
+
+    <div>
+        <h2>Linux下可以读取文件的工具</h2>
+        <p>
+        cat、tac、more、less、head、tail、nl、sort、grep、uniq、sed、awk、od
+        </p>
+        <pre>
+~$ sed '' /flag
+flag{this_is_flag}
+
+~$ awk 1 /flag
+flag{this_is_flag}
+
+~$ uniq /flag
+flag{this_is_flag}
+
+~$ grep '' /flag
+flag{this_is_flag}
+
+~$ od -c /flag
+0000000 f l a g { t h i s _ i s _ f l a
+0000020 g } \n
+0000023
+        </pre>
+    </div>
+    <div>
+        <h2>参考文章</h2>
+        <a href="https://blog.csdn.net/Manuffer/article/details/120672448" style="font-size:large">命令注入以及常见绕过方式</a>
+
+    </div>
+</div>
 {% endblock %}
